@@ -3,41 +3,30 @@
 @import '@fontsource/roboto/500.css';
 @import '@fontsource/roboto/700.css';
 
-.App {
-  text-align: center;
-}
+.todo {
+  margin-top: 10px !important;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .card {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2px !important;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .border{
+    border: 1px solid #cbcbcb;
+    border-radius: 1px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .p-5{
+    padding: 5px !important;
+  }
+
+
+  .item-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
