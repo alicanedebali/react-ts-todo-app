@@ -8,16 +8,12 @@ import {bindActionCreators} from "redux";
 import * as todoAction from '../../store/actions/todo/todo.actions';
 
 function Todo({todos}: { todos?: TodoInterface[] }) {
-    const [mockTodos, setMockTodos] = useState<TodoInterface[]>([
-        {description: 'todo', id: 10, isDone: false},
-        {description: 'doing', id: 20, isDone: false},
-        {description: 'done', id: 30, isDone: false}])
-    const dispatch = useDispatch();
-    const todoActions = bindActionCreators(todoAction, dispatch)
+    const [mockTodos, setMockTodos] = useState<TodoInterface[]>([])
+    const [todoActions] = useState(bindActionCreators(todoAction, useDispatch()))
     useEffect(() => {
         if (todos === undefined) todoActions.getTodos();
         else setMockTodos([...todos])
-    }, [todos])
+    }, [todoActions, todos])
     return (
 
         <Container fixed>

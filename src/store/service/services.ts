@@ -12,7 +12,7 @@ export const addTodoToService= (todo:TodoInterface)=>{
 }
 
 export const updateTodoToService= (todo:TodoInterface)=>{
-    return axios.put(apiUrl, {...todo})
+    return axios.put(apiUrl+ '/'+ todo.id, {...todo})
 }
 
 export const deleteTodoToService= (todo:TodoInterface)=>{

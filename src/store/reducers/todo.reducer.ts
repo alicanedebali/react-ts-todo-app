@@ -6,19 +6,30 @@ const initialState: { todos?: TodoInterface[] } = {
     todos: undefined
 }
 
-export const todoReducer = (state = initialState, action: ActionInterface<TodoInterface[]>) => {
+export const todoReducer = (state = initialState, action: ActionInterface<TodoInterface[] | TodoInterface>) => {
     switch (action.type) {
         case GET_TODOS:
             return {todos: action.payload}
-        case ADD_TODO:
-            return {todos: action.payload}
+        case ADD_TODO: {
+            const newTodo = action.payload as TodoInterface;
+            const todos = state?.todos || [];
+            return {todos: [...todos, {...newTodo}]}
+        }
+        case UPDATE_TODO: {
+            const updatedTodo = action.payload as TodoInterface;
+            const todos = state.todos?.map(todo => {
+                if (todo.id === updatedTodo.id) {
+                    todo = updatedTodo;
+                }
+                return todo;
+            }) || [updatedTodo];
+            return {todos: [...todos]}
+        }
 
-        case UPDATE_TODO:
-            return {todos: action.payload}
-
-        case REMOVE_TODO:
-            return {todos: action.payload}
-
+        case REMOVE_TODO: {
+            const removedTodo = action.payload as TodoInterface;
+            return {todos: state.todos?.filter(todo => todo.id !== removedTodo?.id)}
+        }
         default:
             return state
     }
