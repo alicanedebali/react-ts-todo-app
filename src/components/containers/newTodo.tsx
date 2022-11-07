@@ -26,7 +26,7 @@ export const NewTodo = () => {
                 <OutlinedInput textChange={inputChange} value={inputValue} label="New Todo"/>
             </Grid>
             <Grid md={2} xs={2} className="item-center">
-                <AddButton click={addClick}/>
+                <AddButton click={addClick} disabled={!inputValue?.length}/>
             </Grid>
         </Grid>
     );

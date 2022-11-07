@@ -13,22 +13,22 @@ export const todoReducer = (state = initialState, action: ActionInterface<TodoIn
         case ADD_TODO: {
             const newTodo = action.payload as TodoInterface;
             const todos = state?.todos || [];
-            return {todos: [...todos, {...newTodo}]}
+            return {...state, todos: [...todos, {...newTodo}]}
         }
         case UPDATE_TODO: {
             const updatedTodo = action.payload as TodoInterface;
             const todos = state.todos?.map(todo => {
-                if (todo.id === updatedTodo.id) {
+                if (todo.id === updatedTodo?.id) {
                     todo = updatedTodo;
                 }
                 return todo;
             }) || [updatedTodo];
-            return {todos: [...todos]}
+            return {...state, todos: [...todos]}
         }
 
         case REMOVE_TODO: {
             const removedTodo = action.payload as TodoInterface;
-            return {todos: state.todos?.filter(todo => todo.id !== removedTodo?.id)}
+            return {...state, todos: state.todos?.filter(todo => todo.id !== removedTodo?.id)}
         }
         default:
             return state

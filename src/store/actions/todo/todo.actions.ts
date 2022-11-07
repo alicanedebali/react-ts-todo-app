@@ -8,7 +8,6 @@ export const getTodos = () =>
 {
     return async (dispatch:Dispatch<any>)=>{
         await getAllTodo().then((res:AxiosResponse<TodoInterface[]>)=>{
-            console.log("getAllTodo", res)
             dispatch({type: GET_TODOS, payload: res.data as TodoInterface[] })
         });
     }
@@ -36,7 +35,6 @@ export const removeTodo = (todo: TodoInterface) =>
 {
     return async (dispatch:Dispatch<any>)=>{
         await deleteTodoToService(todo).then((res:AxiosResponse<TodoInterface>)=>{
-            console.log("remove todo", res)
             dispatch({type: REMOVE_TODO, payload: res.data as TodoInterface })
         });
     }

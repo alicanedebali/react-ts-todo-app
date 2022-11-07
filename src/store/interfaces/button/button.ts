@@ -1,3 +1,4 @@
 export interface ButtonInterface{
-    click:()=>void
+    click:()=>void;
+    disabled?:boolean;
 }
