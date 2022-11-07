@@ -7,7 +7,7 @@ import {TodoInterface} from "../../../store";
 export const TodoListItem = ({item}: {item: TodoInterface }) => {
     const labelId = `checkbox-list-label-${item.id}`;
 
-    const handleToggle = (id: number, status: string) => () => {
+    const handleToggle = (id?: number, status?: string) => () => {
         console.log("id: %s, status: %s", id,status)
     };
     return (
@@ -15,13 +15,13 @@ export const TodoListItem = ({item}: {item: TodoInterface }) => {
             className="border"
             key={item.id}
             secondaryAction={
-                <DeleteButton click={handleToggle(item.id, 'delete')}/>
+                <DeleteButton click={handleToggle(item?.id, 'delete')}/>
             }
             disablePadding
         >
-            <ListItemButton role={undefined} onClick={handleToggle(item.id, 'checked')} dense>
+            <ListItemButton role={undefined} onClick={handleToggle(item?.id, 'checked')} dense>
                 <ListItemIcon>
-                   <CheckBox  id={item.id} checked={item.status === 'done'}/>
+                   <CheckBox  id={item?.id} checked={item?.isDone}/>
                 </ListItemIcon>
                 <ListItemText id={labelId} primary={`Line item ${item.description}`} />
             </ListItemButton>

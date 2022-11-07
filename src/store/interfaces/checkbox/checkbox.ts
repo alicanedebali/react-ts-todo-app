@@ -1,4 +1,4 @@
 export interface CheckboxInterface {
-    checked: boolean;
-    id: number
+    checked?: boolean;
+    id?: number
 }

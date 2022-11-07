@@ -9,7 +9,7 @@ export const CheckBox =({id, checked}:CheckboxInterface)=> {
             checked={checked}
             tabIndex={-1}
             disableRipple
-            inputProps={{ 'aria-labelledby': id.toString() }}
+            inputProps={{ 'aria-labelledby': id?.toString() }}
         />
     );
 }
