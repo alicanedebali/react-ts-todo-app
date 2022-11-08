@@ -10,6 +10,7 @@ import * as todoAction from "../../../store/actions/todo/todo.actions";
 export const TodoListItem = ({item}: { item: TodoInterface }) => {
     const labelId = `checkbox-list-label-${item.id}`;
     const [todoActions] = useState(bindActionCreators(todoAction, useDispatch()))
+    const textClass= item?.isDone ? 'line-through': '';
 
     const handleToggle = (status?: string) => () => {
         if (status === 'delete') {
@@ -31,7 +32,7 @@ export const TodoListItem = ({item}: { item: TodoInterface }) => {
                 <ListItemIcon>
                     <CheckBox id={item?.id} checked={item?.isDone}/>
                 </ListItemIcon>
-                <ListItemText id={labelId} primary={`Line item ${item.description}`}/>
+                <ListItemText id={labelId} primary={`Line item ${item.description}`} className={textClass}/>
             </ListItemButton>
         </ListItem>
     );
