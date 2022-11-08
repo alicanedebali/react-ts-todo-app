@@ -1,18 +1,15 @@
-import { Snackbar, Stack} from '@mui/material';
-import React, {useEffect} from 'react';
+import {Snackbar, Stack} from '@mui/material';
+import React, {useEffect, useState} from 'react';
 import {AlertInterface} from "../../store";
 import {TodoAlert} from "../alert";
 
 function TodoSnackbar(alert?: AlertInterface) {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     useEffect(() => {
         setOpen(true)
     }, [alert]);
 
-    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
-        if (reason === 'clickaway') {
-            return;
-        }
+    const handleClose = () => {
         setOpen(false);
     };
     return (
